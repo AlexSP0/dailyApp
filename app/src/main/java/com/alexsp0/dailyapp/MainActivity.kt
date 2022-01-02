@@ -3,8 +3,10 @@ package com.alexsp0.dailyapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.alexsp0.dailyapp.contracts.MainContract
 import com.alexsp0.dailyapp.data.NasaImageResponse
+import com.alexsp0.dailyapp.ui.MainFragment
 import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
@@ -13,14 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //Получаем presenter из App
         val app = application as App
-        presenter= app.presenter
-        presenter.attach(this)
-        presenter.getDailyImage()
-        img = findViewById(R.id.image)
+        loadFragment(MainFragment.newInstance(app.presenter))
     }
-    fun setImage(imageInfo : NasaImageResponse) {
-        Glide.with(this).load(imageInfo.url).placeholder(R.drawable.film).into(img)
+
+    fun loadFragment(fragment : Fragment) {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, fragment)
+            .addToBackStack(fragment.toString())
+            .commit()
     }
 }

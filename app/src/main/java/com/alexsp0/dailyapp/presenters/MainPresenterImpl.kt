@@ -4,9 +4,10 @@ import com.alexsp0.dailyapp.MainActivity
 import com.alexsp0.dailyapp.contracts.MainContract
 import com.alexsp0.dailyapp.data.NasaImageResponse
 import com.alexsp0.dailyapp.models.MainModelImpl
+import com.alexsp0.dailyapp.ui.MainFragment
 
 class MainPresenterImpl:MainContract.MainPresenter {
-    private var activity: MainActivity? = null
+    private var fragment: MainFragment? = null
     private val model = MainModelImpl()
 
     init{
@@ -17,14 +18,14 @@ class MainPresenterImpl:MainContract.MainPresenter {
     }
 
     override fun setDailyImage(response: NasaImageResponse) {
-            activity?.setImage(response)
+            fragment?.setImage(response)
     }
 
-    override fun attach(activity: MainActivity) {
-        this.activity = activity
+    override fun attach(fragment: MainFragment) {
+        this.fragment = fragment
     }
 
     override fun detach() {
-        this.activity = null
+        this.fragment = null
     }
 }
