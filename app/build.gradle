@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file("dailyApp.properties").newDataInputStream())
+def nasaApiKey = properties.getProperty("NASA_API_KEY", "")
+
 android {
     compileSdk 31
 
@@ -13,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField("String", "NASA_API_KEY", nasaApiKey)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
