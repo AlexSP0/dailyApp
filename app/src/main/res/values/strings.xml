@@ -2,4 +2,6 @@
     <string name="app_name">dailyApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_wiki">Search wiki</string>
+    <string name="wiki_helper_text">search wiki helper</string>
 </resources>
