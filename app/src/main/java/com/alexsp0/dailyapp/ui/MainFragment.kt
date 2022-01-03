@@ -35,12 +35,15 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         image = view.findViewById(R.id.image)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         initSearchWikiIcon(view)
         presenter.getDailyImage()
-        return view
     }
 
     private fun initSearchWikiIcon(view : View) {
@@ -68,7 +71,7 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
         bottomSheetDescription.text = imageInfo.explanation
 //        image.setImageResource(R.drawable.film)
 //        bottomSheetHeader.text = "Header"
-//        bottomSheetDescription.text = "Description"
+//        bottomSheetDescription.text = "Descriptiofgjkdfhg;lsdfh;lgjdl;sfgjj;lsdfg sdlfijhsdlkf lkjdsfh sdghjj sdgh;jsghjslkhg  sdgh;j;jgh;lkghpoit;glkd;fhjlkgitjgosndfonbsgdbn sdlfk"
 //        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 

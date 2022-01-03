@@ -13,9 +13,10 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scaleType="centerInside"
             app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +24,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_text_search_wiki_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
             android:layout_marginHorizontal="16dp"
             android:hint="@string/search_wiki"
             app:counterEnabled="true"
@@ -32,7 +34,7 @@
             app:helperText="@string/wiki_helper_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_search_background"
             app:endIconCheckable="true">
@@ -47,7 +49,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include layout="@layout/bottom_sheet_main" />
+    <include layout="@layout/bottom_sheet_main"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
