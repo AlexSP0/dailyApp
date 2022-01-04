@@ -10,8 +10,7 @@ import com.alexsp0.dailyapp.ui.MainFragment
 import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var presenter :MainContract.MainPresenter
-    private lateinit var img : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
