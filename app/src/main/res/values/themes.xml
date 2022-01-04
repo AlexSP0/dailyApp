@@ -16,10 +16,11 @@
     <style name="Dark" parent="Theme.DailyApp">
         <item name="android:colorBackground">@color/dark_grey</item>
         <item name="fragmentColorBackground">@color/dark_grey</item>
+        <item name="fragmentColorBackgroundBottomSheet">@color/dark_grey_bottom_sheet</item>
 
     </style>
     <style name="Light" parent="Theme.DailyApp">
         <item name="android:colorBackground">@color/light_grey</item>
-        <item name="fragmentColorBackground">@color/light_grey</item>
+        <item name="fragmentColorBackground">@color/light_grey_bottom_sheet</item>
     </style>
 </resources>
