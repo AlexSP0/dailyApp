@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.alexsp0.dailyapp.MainActivity
 import com.alexsp0.dailyapp.R
 import com.alexsp0.dailyapp.data.NasaImageResponse
 import com.alexsp0.dailyapp.presenters.MainPresenterImpl
@@ -66,13 +67,13 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
     }
 
     fun setImage(imageInfo : NasaImageResponse) {
-        Glide.with(this).load(imageInfo.url).placeholder(R.drawable.film).into(image)
-        bottomSheetHeader.text = imageInfo.title
-        bottomSheetDescription.text = imageInfo.explanation
-//        image.setImageResource(R.drawable.film)
-//        bottomSheetHeader.text = "Header"
-//        bottomSheetDescription.text = "Descriptiofgjkdfhg;lsdfh;lgjdl;sfgjj;lsdfg sdlfijhsdlkf lkjdsfh sdghjj sdgh;jsghjslkhg  sdgh;j;jgh;lkghpoit;glkd;fhjlkgitjgosndfonbsgdbn sdlfk"
-//        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+//        Glide.with(this).load(imageInfo.url).placeholder(R.drawable.film).into(image)
+//        bottomSheetHeader.text = imageInfo.title
+//        bottomSheetDescription.text = imageInfo.explanation
+        image.setImageResource(R.drawable.film)
+        bottomSheetHeader.text = "Header"
+        bottomSheetDescription.text = "Descriptiofgjkdfhg;lsdfh;lgjdl;sfgjj;lsdfg sdlfijhsdlkf lkjdsfh sdghjj sdgh;jsghjslkhg  sdgh;j;jgh;lkghpoit;glkd;fhjlkgitjgosndfonbsgdbn sdlfk"
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     override fun onDestroy() {
@@ -83,5 +84,9 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(presenter: MainPresenterImpl) = MainFragment(presenter)
+    }
+    fun changeTheme(isDark : Boolean) {
+        val act = activity as MainActivity
+        act.reloadAll()
     }
 }
