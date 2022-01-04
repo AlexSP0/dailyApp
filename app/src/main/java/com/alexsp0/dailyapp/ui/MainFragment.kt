@@ -67,13 +67,13 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
     }
 
     fun setImage(imageInfo : NasaImageResponse) {
-//        Glide.with(this).load(imageInfo.url).placeholder(R.drawable.film).into(image)
-//        bottomSheetHeader.text = imageInfo.title
-//        bottomSheetDescription.text = imageInfo.explanation
-        image.setImageResource(R.drawable.film)
-        bottomSheetHeader.text = "Header"
-        bottomSheetDescription.text = "Descriptiofgjkdfhg;lsdfh;lgjdl;sfgjj;lsdfg sdlfijhsdlkf lkjdsfh sdghjj sdgh;jsghjslkhg  sdgh;j;jgh;lkghpoit;glkd;fhjlkgitjgosndfonbsgdbn sdlfk"
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        Glide.with(this).load(imageInfo.url).placeholder(R.drawable.film).into(image)
+        bottomSheetHeader.text = imageInfo.title
+        bottomSheetDescription.text = imageInfo.explanation
+//        image.setImageResource(R.drawable.film)
+//        bottomSheetHeader.text = "Header"
+//        bottomSheetDescription.text = "Descriptiofgjkdfhg;lsdfh;lgjdl;sfgjj;lsdfg sdlfijhsdlkf lkjdsfh sdghjj sdgh;jsghjslkhg  sdgh;j;jgh;lkghpoit;glkd;fhjlkgitjgosndfonbsgdbn sdlfk"
+//        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     override fun onDestroy() {
