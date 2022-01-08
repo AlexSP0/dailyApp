@@ -10,10 +10,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.alexsp0.dailyapp.MainActivity
 import com.alexsp0.dailyapp.R
 import com.alexsp0.dailyapp.data.NasaImageResponse
 import com.alexsp0.dailyapp.presenters.MainPresenterImpl
+import com.alexsp0.dailyapp.ui.mainViewPager.DateFragment
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.textfield.TextInputEditText
@@ -41,10 +44,32 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        image = view.findViewById(R.id.image)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         initSearchWikiIcon(view)
-        presenter.getDailyImage()
+        val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
+        viewPager.adapter = MainFragmentPagerAdapter(this.childFragmentManager, context!!)
+        viewPager.addOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+
+            }
+
+            override fun onPageSelected(position : Int) {
+                if(position == 1 ) {
+                    val fr =
+                        (viewPager.adapter as MainFragmentPagerAdapter).getItem(position) as DateFragment
+                    fr.checkDate()
+                }
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+        })
+        //presenter.getDailyImage()
     }
 
     private fun initSearchWikiIcon(view : View) {
