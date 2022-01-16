@@ -52,6 +52,10 @@ class DateFragment(private val presenter : MainContract.DatePresenter) : Fragmen
             presenter.getImageByDate(date!!)
         }
     }
+    fun clearDate() {
+        date = null
+        checkDate()
+    }
 
     private fun showDateDialog() {
         val calendar = Calendar.getInstance(Locale.getDefault())

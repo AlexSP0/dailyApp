@@ -19,6 +19,7 @@ import com.alexsp0.dailyapp.presenters.MainPresenterImpl
 import com.alexsp0.dailyapp.ui.mainViewPager.DateFragment
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -30,6 +31,8 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
     private lateinit var bottomSheetDescription : TextView
     private lateinit var input_wiki_text_layout : TextInputLayout
     private lateinit var input_text_search_wiki : TextInputEditText
+    private lateinit var chooseDateFloatActionButton : FloatingActionButton
+    private lateinit var viewPager: ViewPager
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.attach(this)
@@ -46,7 +49,13 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         initSearchWikiIcon(view)
-        val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
+        initViewPager(view)
+        initFab(view)
+
+    }
+
+    private fun initViewPager(view: View) {
+        viewPager = view.findViewById<ViewPager>(R.id.view_pager)
         viewPager.adapter = MainFragmentPagerAdapter(this.childFragmentManager, context!!)
         viewPager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(
@@ -69,7 +78,16 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
 
             }
         })
-        //presenter.getDailyImage()
+    }
+
+    private fun initFab(view : View) {
+        chooseDateFloatActionButton = view.findViewById(R.id.choose_date_fab)
+        chooseDateFloatActionButton.setOnClickListener {
+            val adapter = viewPager.adapter as MainFragmentPagerAdapter
+            viewPager.setCurrentItem(DATE_FRAGMENT, false)
+            val dateFragment = adapter.getItem(DATE_FRAGMENT) as DateFragment
+            dateFragment.clearDate()
+        }
     }
 
     private fun initSearchWikiIcon(view : View) {
@@ -97,7 +115,7 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
         bottomSheetDescription.text = imageInfo.explanation
 //        image.setImageResource(R.drawable.film)
 //        bottomSheetHeader.text = "Header"
-//        bottomSheetDescription.text = "Descriptiofgjkdfhg;lsdfh;lgjdl;sfgjj;lsdfg sdlfijhsdlkf lkjdsfh sdghjj sdgh;jsghjslkhg  sdgh;j;jgh;lkghpoit;glkd;fhjlkgitjgosndfonbsgdbn sdlfk"
+//        bottomSheetDescription.text = "LONG LONG LONG DESCRIPTION"
 //        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 

@@ -8,8 +8,8 @@ import com.alexsp0.dailyapp.presenters.DatePresenterImpl
 import com.alexsp0.dailyapp.ui.mainViewPager.DateFragment
 import com.alexsp0.dailyapp.ui.mainViewPager.TodayFragment
 
-private const val TODAY_FRAGMENT = 0
-private const val DATE_FRAGMENT = 1
+const val TODAY_FRAGMENT = 0
+const val DATE_FRAGMENT = 1
 
 class MainFragmentPagerAdapter(private val fragmentManager: FragmentManager, context : Context) :
     FragmentStatePagerAdapter(fragmentManager){

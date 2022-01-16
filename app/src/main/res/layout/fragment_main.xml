@@ -26,6 +26,16 @@
 
         </androidx.viewpager.widget.ViewPager>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/choose_date_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_date_range_24"
+            android:layout_marginBottom="55dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_pager"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include layout="@layout/bottom_sheet_main" />
