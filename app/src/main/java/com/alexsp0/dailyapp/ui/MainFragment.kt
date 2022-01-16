@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.alexsp0.dailyapp.MainActivity
 import com.alexsp0.dailyapp.R
 import com.alexsp0.dailyapp.data.NasaImageResponse
 import com.alexsp0.dailyapp.presenters.MainPresenterImpl
@@ -83,5 +84,9 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(presenter: MainPresenterImpl) = MainFragment(presenter)
+    }
+    fun changeTheme(isDark : Boolean) {
+        val act = activity as MainActivity
+        act.reloadAll()
     }
 }
