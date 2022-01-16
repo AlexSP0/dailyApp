@@ -11,4 +11,5 @@
     <color name="light_grey">#989292</color>
     <color name="dark_grey_bottom_sheet">#6E6969</color>
     <color name="light_grey_bottom_sheet">#B5ACAC</color>
+    <color name="textColor">#7EFA00</color>
 </resources>
