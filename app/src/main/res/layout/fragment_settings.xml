@@ -7,13 +7,13 @@
     android:background="?fragmentColorBackground"
     tools:context=".ui.SettingsFragment">
 
-
+    <!--ничего не придумал как применить constraint layout, поэтому только объединил в цепочку-->
     <Switch
         android:id="@+id/use_dark_theme_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Use dark theme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settings_ok_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
