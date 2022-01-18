@@ -11,20 +11,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.alexsp0.dailyapp.R
+import com.alexsp0.dailyapp.contracts.MainContract
 import com.alexsp0.dailyapp.data.NasaImageResponse
-import com.alexsp0.dailyapp.presenters.MainPresenterImpl
+import com.alexsp0.dailyapp.presenters.MainPresenter
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class MainFragment(presenter:MainPresenterImpl) : Fragment() {
-    private var presenter : MainPresenterImpl = presenter
+class MainFragment(private var presenter: MainPresenter) : Fragment(), MainContract.MainView {
+
     private lateinit var image : ImageView
+
     private lateinit var  bottomSheetBehavior : BottomSheetBehavior<ConstraintLayout>
+
     private lateinit var bottomSheetHeader : TextView
+
     private lateinit var bottomSheetDescription : TextView
+
     private lateinit var input_wiki_text_layout : TextInputLayout
+
     private lateinit var input_text_search_wiki : TextInputEditText
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,14 +64,14 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
         }
     }
 
-    fun setBottomSheetBehavior(bottomSheet : ConstraintLayout) {
+    private fun setBottomSheetBehavior(bottomSheet : ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetHeader = bottomSheet.findViewById(R.id.bottom_sheet_description_header)
         bottomSheetDescription = bottomSheet.findViewById(R.id.bottom_sheet_description)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    fun setImage(imageInfo : NasaImageResponse) {
+    override fun setImage(imageInfo : NasaImageResponse) {
         Glide.with(this).load(imageInfo.url).placeholder(R.drawable.film).into(image)
         bottomSheetHeader.text = imageInfo.title
         bottomSheetDescription.text = imageInfo.explanation
@@ -79,6 +85,6 @@ class MainFragment(presenter:MainPresenterImpl) : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(presenter: MainPresenterImpl) = MainFragment(presenter)
+        fun newInstance(presenter: MainPresenter) = MainFragment(presenter)
     }
 }

@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NasaQueryDailyPicture {
+
     @GET("planetary/apod")
-    fun loadDailyImage(@Query("api_key") apiKey: String) : Call<NasaImageResponse>
+    fun loadDailyImage(@Query("api_key") apiKey: String): Call<NasaImageResponse>
 }
